@@ -110,9 +110,11 @@ class Patch:
         m2 = self.get_md5(os.path.join(temp, name))
         print("\nEnding MD5:  {}".format(m2))
         if m1 == m2:
-            print(" - No change in MD5!  Patch NOT Successful.")
-        else:
-            print(" - MD5 changed!  Patch SUCCESSFUL.")
+            print(" - No change in MD5!  Patch NOT Successful.\n")
+            self.u.grab("Press [enter] to return to the main menu...")
+            return
+
+        print(" - MD5 changed!  Patch SUCCESSFUL.")
         os.chdir(os.path.dirname(os.path.realpath(__file__)))
         os.chdir("../")
         a_path = os.path.join(os.getcwd(), "APFS-Patched")
